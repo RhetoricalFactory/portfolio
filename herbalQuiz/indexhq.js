@@ -20,15 +20,17 @@ function renderQuestion() {
     const questionTemplate =
         $(`<h2 class="headStyle title"> Score ${score} correct ${scoreWrong} incorrect Question ${questionNumber +1} of 7</h2>
     
-    <div id=questionSpot <section class="headStyle questionArea">
+    <div id=questionSpot <section class="container">
    ${questions.image}
-          <h3 >${questions.questionText}</h3>
+          <h3>${questions.questionText}</h3>
           <form method="post">
-              <label><input type="radio" name="choice" value="${questions.responses[0]}">${questions.responses[0]}<br></label>
-              <label><input type="radio" name="choice" value="${questions.responses[1]}">${questions.responses[1]}<br></label>
-              <label><input type="radio" name="choice" value="${questions.responses[2]}">${questions.responses[2]}<br></label>
-              <label><input type="radio" name="choice" value="${questions.responses[3]}">${questions.responses[3]}<br></label>
-              <button type="submit" id="choose" value="submit">Submit</button>
+            <ul>
+            <li><label><input type="radio" name="choice" value="${questions.responses[0]}">${questions.responses[0]}<br></label></li>
+            <li><label><input type="radio" name="choice" value="${questions.responses[1]}">${questions.responses[1]}<br></label></li>
+            <li><label><input type="radio" name="choice" value="${questions.responses[2]}">${questions.responses[2]}<br></label></li>
+            <li><label><input type="radio" name="choice" value="${questions.responses[3]}">${questions.responses[3]}<br></label></li>
+            </ul>
+            <div class="row"><button type="submit" id="choose" value="submit">Submit</button></div>
             </form>
       </section>
       </div>`);
@@ -49,22 +51,22 @@ function checkAnswer() {
         if (chosenAnswer === questions.answer) {
             const correctResponse =
                 $(`<h2 class="headStyle title"> Score ${score} correct ${scoreWrong} incorrect Question ${questionNumber +1} of 7</h2>
-    <img ${questions.image}/>
+    <img ${questions.image}
     <section class="headStyle questionArea result">
     <h3 class="result">${questions.answer}</h3>
     <h4 class="result">Correct!</h4>
-    <button type="submit" id="next" value="submit">Next</button>
+    <div class="row"><button type="submit" id="next" value="submit">Next</button></div>
     </section`);
             $("main").html(correctResponse);
             score = score + 1;
         } else {
             const inCorrectResponse =
                 $(`<h2 class="headStyle title"> Score ${score} correct ${scoreWrong} incorrect Question ${questionNumber +1} of 7</h2>
-    <img ${questions.image}/>
+    <img ${questions.image}
     <section class="headStyle questionArea result">
     <h4 class="result"> Incorrect. <br> The correct answer is:</h4>
     <h3 class="result">${questions.answer}</h3>
-    <button type="submit" id="next" value="submit">Next</button>
+    <div class="row"><button type="submit" id="next" value="submit">Next</button></div>
     </section>`);
             $("main").html(inCorrectResponse);
             scoreWrong = scoreWrong + 1;
